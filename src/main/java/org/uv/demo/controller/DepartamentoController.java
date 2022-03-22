@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.uv.demo.model.Empleados;
-import org.uv.demo.repository.EmpleadoRepository;
+import org.uv.demo.model.Departamentos;
+import org.uv.demo.repository.DepartamentoRepository;
 
 /**
  *
@@ -20,39 +20,39 @@ import org.uv.demo.repository.EmpleadoRepository;
  */
 @RestController
 @RequestMapping("/api")
-public class EmpleadoController {
+public class DepartamentoController {
     
     @Autowired
-    private EmpleadoRepository empRepository;
+    private DepartamentoRepository depRepository;
     
     // GET metodo para buscar todos los empleados
-    @GetMapping("/empleados")
-    public List<Empleados> getAllEmpleados() {
-        return empRepository.findAll();
+    @GetMapping("/departamentos")
+    public List<Departamentos> getAllDepartamentos() {
+        return depRepository.findAll();
     }
 
     // GET metodo para buscar por clave
-    @GetMapping(path="/empleados/{id}")
-    public Empleados getEmpleadoById(@PathVariable Long id){
-        Optional<Empleados> emp = empRepository.findById(id);
+    @GetMapping(path="/departamentos/{id}")
+    public Departamentos getDepartamentoById(@PathVariable Long id){
+        Optional<Departamentos> emp = depRepository.findById(id);
         return emp.get();
     }
     
     // POST metodo de crear un empleado
-    @PostMapping("/empleados")
-    public Empleados createEmpleado(@RequestBody Empleados empleado) {
-        return empRepository.save(empleado);
+    @PostMapping("/departamentos")
+    public Departamentos createDepartamento(@RequestBody Departamentos departamento) {
+        return depRepository.save(departamento);
     }
   
     // PUT metodo de actualizar
-    @PutMapping("/empleados/{id}")
-    public void updateDepartamento (@RequestBody Empleados empleado) {
-        empRepository.save(empleado);
+    @PutMapping("/departamentos/{id}")
+    public void updateDepartamento (@RequestBody Departamentos departamento) {
+        depRepository.save(departamento);
     }
   
     // DELETE metodo de borrar 
-    @DeleteMapping("/empleados/{id}")
-    public void deleteEmpleado(@PathVariable("id") Long id) {
-        empRepository.deleteById(id);
+    @DeleteMapping("/departamentos/{id}")
+    public void deleteDepartamento(@PathVariable("id") Long id) {
+        depRepository.deleteById(id);
     }
 }
