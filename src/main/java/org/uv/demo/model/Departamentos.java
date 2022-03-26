@@ -16,6 +16,7 @@ import javax.persistence.Table;
 public class Departamentos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="clave", unique = true, nullable= false)
     private Long clave;
     @Column(name="nombre")
     private String nombre;
